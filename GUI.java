@@ -2,7 +2,6 @@
 
 // reset && javac -d bin -cp lib/tritonus_share.jar:lib/commons-logging-1.2.jar:lib/mp3spi1.9.4.jar:lib/jl1.0.jar:lib/basicplayer3.0.jar:lib/jlayer-1.0.1.jar *.java && java -cp lib/tritonus_share.jar:lib/commons-logging-1.2.jar:lib/mp3spi1.9.4.jar:lib/jl1.0.jar:lib/basicplayer3.0.jar:lib/jlayer-1.0.1.jar:bin mypack.GUI
 
-
 // https://stackoverflow.com/questions/1912758/how-to-add-a-popup-menu-to-a-jtextfield
 // http://www.java2s.com/Code/Java/Swing-JFC/Apopupmenuissometimescalledacontextmenu.htm
 // https://stackoverflow.com/questions/30682416/java-right-click-copy-cut-paste-on-textfield
