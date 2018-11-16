@@ -241,7 +241,7 @@ public class GUI extends Thread implements MouseListener, MouseWheelListener {
   }
 
   private void setFrame () {
-    frame.setTitle ( "File downloader v.00" );
+    frame.setTitle ( "get & play" );
     frame.setContentPane ( windowContent );
     frame.setSize ( 500, 180 );
     frame.setResizable ( true );
