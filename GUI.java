@@ -28,7 +28,7 @@ public class GUI extends Thread implements MouseListener, MouseWheelListener {
 	private static boolean mousePressed = false;
 	private static boolean isPlaying = false;
 	private static boolean isResume = false;
-  private static String audioFile = "demo.mp3"; // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
+  private static String audioFile = ""; // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
 
   private static BorderLayout border;
   private static JFrame frame = new JFrame ();
@@ -186,7 +186,7 @@ public class GUI extends Thread implements MouseListener, MouseWheelListener {
   }
 
   private void addContentToPanel () {
-    paneProgress.setLayout ( new GridLayout ( 3, 0, 0, 0 ) );
+    paneProgress.setLayout ( new GridLayout ( 2, 0, 0, 0 ) );
     paneProgress.setBackground ( Color.GRAY );
     paneProgress.add ( labelInfoDownload );
     paneProgress.add ( waitBar );
@@ -243,7 +243,7 @@ public class GUI extends Thread implements MouseListener, MouseWheelListener {
   private void setFrame () {
     frame.setTitle ( "File downloader v.00" );
     frame.setContentPane ( windowContent );
-    frame.setSize ( 500, 250 );
+    frame.setSize ( 500, 180 );
     frame.setResizable ( true );
     frame.setDefaultCloseOperation ( JFrame.EXIT_ON_CLOSE );
     frame.setVisible ( true );
@@ -255,7 +255,42 @@ public class GUI extends Thread implements MouseListener, MouseWheelListener {
 	public void mousePressed ( MouseEvent e ) {}
   // ROUND BUTTON
 	public void mouseClicked ( MouseEvent e ) {
-    //
+    if ( !( !circlePlay.contains ( e.getPoint () ) && circleOpen.contains ( e.getPoint () ) ) ) {
+			if ( !isPlaying ) {
+				if ( !isResume ) {
+					isResume = true;
+					openFile ( fieldFileName.getText () );
+					playAudio ();
+				}
+				else if ( isResume ) { // isResume
+					isResume = true;
+					playResume ();
+				}
+				System.out.println ( "Click Play" );
+				isPlaying = true;
+				mousePressed = true;
+			}
+			else if ( isPlaying ) { // isPlaying
+				pauseAudio ();
+				System.out.println ( "Click Pause" );
+				isPlaying = false;
+				mousePressed = false;
+			}
+    }
+    if ( !circlePlay.contains ( e.getPoint () ) && circleOpen.contains ( e.getPoint () ) ) {
+			if ( isPlaying ) {
+				mousePressed = false;
+				stopAudio ();
+				isPlaying = false;
+				System.out.println ( "Click Stop" );
+			}
+			else if ( isPlaying ) { // !isPlaying
+				openFile ( fieldFileName.getText () );
+				isResume = false;
+				isPlaying = true;
+				System.out.println ( "Click Open" );
+			}
+	  }
   }
 
   void eventOutputVolume ( String eventDescription ) {
@@ -285,7 +320,7 @@ public class GUI extends Thread implements MouseListener, MouseWheelListener {
 		}
   }
 
-  private void openFile ( String file ) { playTool.openFile ( audioFile ); }
+  private void openFile ( String file ) { playTool.openFile ( file ); }
 	private void playAudio () { playTool.playFile ();	}
 	private void pauseAudio () { playTool.pauseFile ();	}
 	private void playResume () { playTool.resumeFile (); }
