@@ -1,4 +1,4 @@
-// Created nov 16 fri 2018
+// Created nov 17 sat 2018
 
 // reset && javac -d bin -cp lib/tritonus_share.jar:lib/commons-logging-1.2.jar:lib/mp3spi1.9.4.jar:lib/jl1.0.jar:lib/basicplayer3.0.jar:lib/jlayer-1.0.1.jar *.java && java -cp lib/tritonus_share.jar:lib/commons-logging-1.2.jar:lib/mp3spi1.9.4.jar:lib/jl1.0.jar:lib/basicplayer3.0.jar:lib/jlayer-1.0.1.jar:bin mypack.GUI
 
@@ -28,7 +28,6 @@ public class GUI extends Thread implements MouseListener, MouseWheelListener {
 	private static boolean mousePressed = false;
 	private static boolean isPlaying = false;
 	private static boolean isResume = false;
-  private static String audioFile = ""; // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
 
   private static BorderLayout border;
   private static JFrame frame = new JFrame ();
@@ -51,10 +50,8 @@ public class GUI extends Thread implements MouseListener, MouseWheelListener {
     setButton ();
     setContextMenuFieldURLFile ();
     addContentToPanel ();
-    listeners ();
     setFrame ();
-    frame.addMouseListener ( this );
-    frame.addMouseWheelListener ( this );
+    listeners ();
   }
 
   // Methods
@@ -224,6 +221,8 @@ public class GUI extends Thread implements MouseListener, MouseWheelListener {
     } ); // end of adapter
 
     buttonSave.addActionListener ( new SaveFile () );
+    frame.addMouseListener ( this );
+    frame.addMouseWheelListener ( this );
   }
 
   class SaveFile implements ActionListener {
