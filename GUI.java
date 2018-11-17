@@ -215,7 +215,7 @@ public class GUI extends Thread implements MouseListener, MouseWheelListener {
       System.out.println ( "button download" );
       setSpinner ();
       downDownload = new Downloader ( alfaSpinner, waitBar, labelPropertiesFile, labelInfoDownload, fieldAddressURL.getText (), fieldFileName.getText () );
-      downDownload.setKey( true );
+      downDownload.setKey ( true );
       downDownload.start ();
 
     } ); // end of adapter
