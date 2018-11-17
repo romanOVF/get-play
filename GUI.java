@@ -79,9 +79,9 @@ public class GUI extends Thread implements MouseListener, MouseWheelListener {
 
     labelPlayer = new JLabel ( "Player" ) {
       public void paint ( Graphics g ) {
-    		g.setColor ( Color.RED );
-    		g.fillOval ( 0, 0, 40, 40 ); // NO
-    		g.setColor ( Color.DARK_GRAY );
+        g.setColor ( Color.RED );
+        g.fillOval ( 0, 0, 40, 40 ); // NO
+        g.setColor ( Color.DARK_GRAY );
         g.fillArc ( 0, 0, 40, 40, -45, -90 ); // NO
         g.setColor ( Color.YELLOW );
         g.fillArc ( 0, 0, 40, 40, -45, vol ); // NO
@@ -95,15 +95,15 @@ public class GUI extends Thread implements MouseListener, MouseWheelListener {
         g2.draw ( circlePlay );
         g2.draw ( circleOpen ); // */
 
-    		if ( mousePressed ) {
-    			g.setColor ( Color.GRAY );
-    			g.fillOval ( 12, 12, 15, 15 );
-    		}
-    		else {
-    			g.setColor ( Color.LIGHT_GRAY );
-    			g.fillOval ( 12, 12, 15, 15 );
-    		}
-        repaint ();
+        if ( mousePressed ) {
+          g.setColor ( Color.GRAY );
+          g.fillOval ( 12, 12, 15, 15 );
+        }
+        else {
+          g.setColor ( Color.LIGHT_GRAY );
+          g.fillOval ( 12, 12, 15, 15 );
+        }
+        //repaint ();
       }
     };
     labelPlayer.setFont ( new Font ( "Liberation Sans", Font.BOLD, 16 ) );
@@ -290,6 +290,7 @@ public class GUI extends Thread implements MouseListener, MouseWheelListener {
 				System.out.println ( "Click Open" );
 			}
 	  }
+    labelPlayer.repaint ();
   }
 
   void eventOutputVolume ( String eventDescription ) {
@@ -314,7 +315,7 @@ public class GUI extends Thread implements MouseListener, MouseWheelListener {
 				System.out.println ( volume );
 				message = vol + " volume -\n";
 			}
-			//repaint ();
+			labelPlayer.repaint ();
 			eventOutputVolume ( message );
 		}
   }
